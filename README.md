@@ -1,2 +1,2 @@
 # Raptor
-Python Cross-Platform Development
+Rapid Cross-Platform Development with Python
