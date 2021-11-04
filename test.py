@@ -37,7 +37,7 @@ def main():
                 >
     ''')
     #create temp file for parsing to before adding to html file
-    tempFile = open('temp.html', 'w')
+    # tempFile = open('temp.html', 'w')
 
     #loop through kv file line by line
     count = 0
