@@ -12,13 +12,21 @@
         <v-app>
         <v-main>
             <v-container>
-                <v-sheet style="height: 95vh; width: 100%;padding-left: 1.5%;"
-                color="white"
-                elevation="5"
-                >
+                <div style="height: 100vh; width: 100%;padding-left: 1.5%; background-color: white;">
                 <v-row style="height: 100%; width: 100%; padding: 0%;">
                     <div style="height: 100%; width: 25%; padding: 5px;">
-                        <v-card elevation="2" style="height: 100%; width: 100%; background-color: blue;"> Testing 1 </v-card>
+                        <v-card elevation="2" style="height: 100%; width: 100%;"> 
+                            <v-col style="height: 100%; width: 100%; padding:0%;">
+                                <div style="height: 50%; width: 100%; padding: 5px;" class="d-flex justify-center">
+                                    <v-btn elevation="0" class="d-flex align-self-center" style="background-color: white; height: 50%; width: 50%;"> <v-icon>mdi-thumb-up</v-icon> </v-btn>
+                                </div>
+                                
+                                <div style="height: 50%; width: 100%; padding: 5px;">
+                                    <v-btn elevation="2" style="height: 100%; width: 100%;"> Testing 4 </v-btn>
+                                </div>
+                            </v-col>
+        
+                        </v-card>
                     </div>  
                     <div style="height: 100%; width: 25%; padding: 5px;">
                         <v-card elevation="2" style="height: 100%; width: 100%; background-color: red;"> Testing 2 </v-card>
@@ -32,9 +40,9 @@
                         </div>
                     </v-col>
                 </v-row>
+                                        
 
-                
-                </v-sheet>
+                </div>
             </v-container>
         </v-main>
         </v-app>

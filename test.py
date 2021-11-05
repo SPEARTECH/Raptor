@@ -31,7 +31,7 @@ def main():
         <v-app>
         <v-main>
             <v-container>
-                <v-sheet style="height: 95vh;"
+                <v-sheet style="height: 100vh;"
                 color="white"
                 elevation="5"
                 >
