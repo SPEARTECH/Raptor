@@ -48,22 +48,20 @@ def main():
     tabCount = 0
     for line in open(kvFile, 'r').readlines():
         lines.append(line)
-    print(lines)
     for line in lines:
-        print(len(lines))
-        print(count)
         if count > len(lines):
             break
         else:
             print(line)
             #getting current amount of tabs
-            tabCount = line.count('\t')
+            tabCount = int((len(line) - len(line.lstrip()))/4)
+            print('tabcount'+str(tabCount))
             #checks for parent tabs amount for reference later
             if tabCount < lastTabCount:
-                parentTabCount = line.count('\t')
+                parentTabCount = int((len(line) - len(line.lstrip()))/4)
             for x in parents:
                 if x in line:
-                    parentTabCount = line.count('\t')
+                    parentTabCount = int((len(line) - len(line.lstrip()))/4)
             #looping through potential parents
             for item in parents:
                 if item in line:
@@ -73,6 +71,7 @@ def main():
                         outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]} </v-btn>')
                         break
             count += 1
+            lastTabCount = lastTabCount + tabCount
 
     outFile.write('''\n
                 

@@ -21,7 +21,7 @@
                         <!-- card (unclickable button), elevation, % size -->
                         <v-card elevation="2" style="height: 100%; width: 100%;"> 
                             <!-- col == orientation: vertical -->
-                            <v-col style="height: 100%; width: 100%; padding:0%;">
+                            <v-col style="height: 100%; width: 100%; padding:0px;">
                                 <!-- height = 100 / # of vertical widgets , padding, centered-->
                                 <div style="height: 50%; width: 100%; padding: 5px;" class="d-flex justify-center">
                                     <!-- centered button, icon, background color, elevation, padding -->
@@ -39,6 +39,7 @@
                         <!-- align-end + justify-end == bottom right of parent (for v-cards) -->
                         <v-card elevation="2" style="height: 100%; width: 100%; background-color: red; padding: 15px; flex-direction: row;" class="d-flex align-start"><div class="d-flex align-self-end">Testing 2</div></v-card>
                     </div>  
+                    <!-- boxlayout orientation: vertical -->
                     <v-col style="height: 100%; width: 100%; padding:0%;">
                         <div style="height: 25%; width: 100%; padding: 5px;">
                             <!-- position left of parent -->
@@ -54,7 +55,7 @@
                         </div>
                         <div style="height: 25%; width: 100%; padding: 5px;">
                             <!-- position bottom of parent -->
-                            <v-btn elevation="2" style="height: 100%; width: 100%; padding: 15px; flex-direction: column;" ><div class="d-flex align-self-end">Testing 6</div></v-btn>
+                            <v-btn elevation="2" style="height: 100%; width: 100%; padding: 10%; flex-direction: column;" ><div class="d-flex align-self-end">Testing 6</div></v-btn>
                         </div>
                     </v-col>
                 </v-row>
