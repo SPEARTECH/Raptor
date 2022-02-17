@@ -46,6 +46,8 @@ def main():
     parentLineNum = 0
     lastTabCount = 0
     tabCount = 0
+    lineCount = 0
+    orientation = 'horizontal'
     for line in open(kvFile, 'r').readlines():
         lines.append(line)
     for line in lines:
@@ -65,13 +67,25 @@ def main():
             #looping through potential parents
             for item in parents:
                 if item in line:
+                    parentTabCount = tabCount
+                    currentTab = tabCount
+                    widgetCount = 0
                     if item == 'Button:':
-                        text = list(re.findall("'([^']*)'", lines[count+1]))
-                        print(text)
-                        outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]} </v-btn>')
-                        break
+                        for line in lines[lineCount:]:
+                            if currentTab == tabCount:
+                                if 'orientation:' in line:
+                                    orientation = list(re.findall("'([^']*)'", line)) 
+                                if 'text:' in line:
+                                    text = list(re.findall("'([^']*)'", line))
+                                    print(text)
+                                    outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text} </v-btn>')
+                                    break
+                            currentTab = int((len(line) - len(line.lstrip()))/4)
+
+                            
             count += 1
             lastTabCount = lastTabCount + tabCount
+            lineCount += 1
 
     outFile.write('''\n
                 
