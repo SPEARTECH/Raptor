@@ -39,6 +39,7 @@ def main():
     #create temp file for parsing to before adding to html file
     # tempFile = open('temp.html', 'w')
 
+    
     #loop through kv file line by line
     count = 0
     lines = []
@@ -47,6 +48,8 @@ def main():
     endWidgetLineNum = 0
     lastTabCount = 0
     tabCount = 0
+    lineCount = 0
+    orientation = 'horizontal'
     for line in open(kvFile, 'r').readlines():
         lines.append(line)
     for line in lines:
@@ -63,9 +66,12 @@ def main():
             for x in parents:
                 if x in line:
                     parentTabCount = int((len(line) - len(line.lstrip()))/4)
-            #looping through potential parents
+            tabLines = []
+            widgetClosingTags = []
+            #checking if a line contains a widget
             for item in parents:
                 if item in line:
+<<<<<<< HEAD
                     if item == 'RButton:':
                         text = list(re.findall("'([^']*)'", lines[count+1]))
                         print(text)
@@ -76,14 +82,53 @@ def main():
                         print(text)
                         outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]} </v-btn>')
                         break
+=======
+                    lastTabCount = tabCount
+                    widgetCount = 0
+                    if item == 'Button:':
+                        parentTabCount = tabCount
+                        firstLine = True
+                        lineCountTotal = len(lines[lineCount:])
+                        lineNum = lineCount
+                        print(lines[lineCount:])
+                        for line in lines[lineCount:]:
+                            currentTab = int((len(line) - len(line.lstrip()))/4)
+                            if currentTab == tabCount + 1:
+                                if 'orientation:' in line:
+                                    orientation = re.findall("'([^']*)'", line)
+                                if 'text:' in line:
+                                    text = re.findall("'([^']*)'", line)
+                                    print(text)
+                                    outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]}')
+                                    widgetClosingTags.append('</v-btn>')
+                            elif currentTab == tabCount and firstLine != True:
+                                widgetClosingTags.reverse()
+                                for item in widgetClosingTags:
+                                    outFile.write('\n' + item)
+                            elif lineNum == lineCountTotal - 1:
+                                widgetClosingTags.reverse()
+                                for item in widgetClosingTags:
+                                    outFile.write('\n' + item)
+                            # elif currentTab < tabCount:
+                            #     for item in widgetClosingTags.reverse():
+                            #         outFile.write(item)
+                                lastTabCount = currentTab
+                            firstLine = False
+
+                            
+>>>>>>> 7f2507cebabb5a3af362e5ccd913dbf560bf83ff
             count += 1
 
             lastTabCount = lastTabCount + tabCount
+<<<<<<< HEAD
             else if count == len(lines) - 1:
                 return 'no <Main> module in kv file'
             else:
                 continue
 
+=======
+            lineCount += 1
+>>>>>>> 7f2507cebabb5a3af362e5ccd913dbf560bf83ff
 
     outFile.write('''\n
                 
