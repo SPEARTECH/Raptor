@@ -1,0 +1,8 @@
+
+[2022-03-07 09:44:10] Traceback (most recent call last):
+  File "C:\Users\stephen.retzlaff\OneDrive - caci_caci\Desktop\Projects\Raptor\cef_tests\cef_test.py", line 56, in <module>
+    main()
+  File "C:\Users\stephen.retzlaff\OneDrive - caci_caci\Desktop\Projects\Raptor\cef_tests\cef_test.py", line 27, in main
+    os.startfile(os.getcwd() + '/display_test.exe')
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\stephen.retzlaff\\OneDrive - caci_caci\\Desktop\\Projects\\Raptor\\cef_tests/display_test.exe'
+

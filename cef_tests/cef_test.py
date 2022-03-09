@@ -8,8 +8,8 @@
 # Setting DPI awareness programmatically via a call to cef.DpiAware.EnableHighDpiSupport
 # is problematic in Python, may not work and can cause display glitches.
 
-from turtle import window_height, window_width
-import turtle
+# from turtle import window_height, window_width
+# import turtle
 from cefpython3 import cefpython as cef
 import platform
 import sys

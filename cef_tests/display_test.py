@@ -1,17 +1,18 @@
 # Imports
 from tracemalloc import start
-from flask import Flask
+from flask import Flask, render_template
 from cefpython3 import cefpython as cef
 import platform
 import sys
-import os
+from os import path
 import time
 import multiprocessing
 from flaskwebgui import FlaskUI
 
 # Settings
+b_path = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe'
 app = Flask(__name__)
-ui = FlaskUI(app, width=500, height=500)
+ui = FlaskUI(app, start_server='flask', browser_path=b_path)#width=500, height=500)
 
 # Routes
 @app.route('/')
@@ -193,5 +194,11 @@ new_page_html = '''
     
 
 if __name__ == '__main__':
-   # app.run()
-   ui.run()
+    # cef.Initialize()
+    # cef.CreateBrowserSync(url="http://127.0.0.1:5000/",
+                        # window_title="Hello World!")
+    # app.run()
+    # cef.MessageLoop()
+    # cef.Shutdown()
+    
+    ui.run()
