@@ -9,7 +9,7 @@ import re
 def main():
     #list of widgets and layouts to refer to later in this script
     #important to use the ':' symbol incase these keywords are used elsewhere
-    parents = ['BoxLayout:', 'Button:']
+    parents = ['MDBoxLayout:', 'MDCard:']
 
     #determine desired kv file to compile to html
     kvFile = input('enter name of .kv file to compile: ')
@@ -44,14 +44,14 @@ def main():
     lines = []
     parentTabCount = 0
     parentLineNum = 0
+    endWidgetLineNum = 0
     lastTabCount = 0
     tabCount = 0
     for line in open(kvFile, 'r').readlines():
         lines.append(line)
     for line in lines:
-        if count > len(lines):
-            break
-        else:
+        if ('<Main>:' in line):
+            mainLineNum = count
             print(line)
             #getting current amount of tabs
             tabCount = int((len(line) - len(line.lstrip()))/4)
@@ -59,19 +59,31 @@ def main():
             #checks for parent tabs amount for reference later
             if tabCount < lastTabCount:
                 parentTabCount = int((len(line) - len(line.lstrip()))/4)
+                
             for x in parents:
                 if x in line:
                     parentTabCount = int((len(line) - len(line.lstrip()))/4)
             #looping through potential parents
             for item in parents:
                 if item in line:
-                    if item == 'Button:':
+                    if item == 'RButton:':
+                        text = list(re.findall("'([^']*)'", lines[count+1]))
+                        print(text)
+                        outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]} </v-btn>')
+                        break
+                    if item == 'RCard:':
                         text = list(re.findall("'([^']*)'", lines[count+1]))
                         print(text)
                         outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]} </v-btn>')
                         break
             count += 1
+
             lastTabCount = lastTabCount + tabCount
+            else if count == len(lines) - 1:
+                return 'no <Main> module in kv file'
+            else:
+                continue
+
 
     outFile.write('''\n
                 
