@@ -194,11 +194,11 @@ new_page_html = '''
     
 
 if __name__ == '__main__':
-    # cef.Initialize()
-    # cef.CreateBrowserSync(url="http://127.0.0.1:5000/",
-                        # window_title="Hello World!")
-    # app.run()
-    # cef.MessageLoop()
-    # cef.Shutdown()
+    cef.Initialize()
+    cef.CreateBrowserSync(url="http://127.0.0.1:5000/",
+                        window_title="Hello World!")
+    app.run()
+    cef.MessageLoop()
+    cef.Shutdown()
     
-    ui.run()
+    # ui.run()

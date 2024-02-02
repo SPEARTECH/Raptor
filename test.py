@@ -71,18 +71,6 @@ def main():
             #checking if a line contains a widget
             for item in parents:
                 if item in line:
-<<<<<<< HEAD
-                    if item == 'RButton:':
-                        text = list(re.findall("'([^']*)'", lines[count+1]))
-                        print(text)
-                        outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]} </v-btn>')
-                        break
-                    if item == 'RCard:':
-                        text = list(re.findall("'([^']*)'", lines[count+1]))
-                        print(text)
-                        outFile.write(f'\n<v-btn elevation="2" style="height: 100%; width: 100%;"> {text[0]} </v-btn>')
-                        break
-=======
                     lastTabCount = tabCount
                     widgetCount = 0
                     if item == 'Button:':
@@ -116,19 +104,10 @@ def main():
                             firstLine = False
 
                             
->>>>>>> 7f2507cebabb5a3af362e5ccd913dbf560bf83ff
             count += 1
 
             lastTabCount = lastTabCount + tabCount
-<<<<<<< HEAD
-            else if count == len(lines) - 1:
-                return 'no <Main> module in kv file'
-            else:
-                continue
-
-=======
             lineCount += 1
->>>>>>> 7f2507cebabb5a3af362e5ccd913dbf560bf83ff
 
     outFile.write('''\n
                 
